@@ -26,6 +26,7 @@ export const AuthProvider = ({children}) => {
   const updateUser = (name, image) => {
     return updateProfile(auth.currentUser, { displayName: name, photoURL: image });
   };
+  
   const logoutUser = async () => {
       await signOut(auth);
   };

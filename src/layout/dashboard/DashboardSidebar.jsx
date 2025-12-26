@@ -8,19 +8,34 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import useAuth from '@/hooks/useAuth';
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Calendar, Home, Inbox, PackagePlus, BanknoteArrowDown, Coins, CreditCard, Users, ClipboardList } from "lucide-react";
 
 
-const items = [
-  { title: "Home", url: "/dashboard", icon: Home },
-  { title: "Inbox", url: "/inbox", icon: Inbox },
-  { title: "Calendar", url: "/calendar", icon: Calendar },
-  { title: "Search", url: "/search", icon: Search },
-  { title: "Settings", url: "/settings", icon: Settings },
-];
+const menuItemsArr = {
+  worker: [
+    { title: "Home", url: "/dashboard", icon: Home },
+    { title: "Task List", url: "/inbox", icon: Inbox },
+    { title: "My Submissions", url: "/calendar", icon: Calendar },
+    { title: "Withdrawals", url: "/withdraw", icon: BanknoteArrowDown },
+  ],
+  buyer: [
+    { title: "Home", url: "/dashboard", icon: Home },
+    { title: "Add New Tasks", url: "/add-tasks", icon: PackagePlus },
+    { title: "Purchase Coin", url: "/purchase", icon: Coins },
+    { title: "Payment History", url: "/payments", icon: CreditCard },
+  ],
+  admin: [
+    { title: "Home", url: "/dashboard", icon: Home },
+    { title: "Manage Users", url: "/manage-users", icon: Users },
+    { title: "Manage Task", url: "/manage-tasks", icon: ClipboardList },
+  ]
+};
 
 export default function DashboardSidebar() {
   const { user } = useAuth();
+
+  const role = user?.role || 'worker'; 
+  const menuItems = menuItemsArr[role] || [];
 
   return (
     <Sidebar>
@@ -40,7 +55,7 @@ export default function DashboardSidebar() {
       {/* MAIN NAVIGATION */}
       <SidebarContent className="px-2">
         <SidebarMenu>
-          {items.map((item) => (
+          {menuItems.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild>
                 <a href={item.url}>
