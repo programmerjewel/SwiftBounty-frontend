@@ -1,0 +1,28 @@
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+
+export const StatCard = ({ title, value, description, icon: Icon }) => (
+  
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">{title}</CardTitle>
+        {Icon && <Icon className="h-4 w-4 text-muted-foreground" />}
+      </CardHeader>
+      <CardContent>
+        <div className="text-3xl font-bold">{value}</div>
+        {description && (
+          <p className="text-xs text-muted-foreground mt-1">{description}</p>
+        )}
+      </CardContent>
+    </Card>
+);
+
+StatCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  description: PropTypes.string,
+  icon: PropTypes.elementType,
+};

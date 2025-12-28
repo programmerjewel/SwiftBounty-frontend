@@ -2,6 +2,10 @@ import DashboardLayout from "@/layout/dashboard/DashboardLayout";
 import MainLayout from "@/layout/public/MainLayout";
 import LoginPage from "@/pages/auth/LoginPage";
 import RegisterPage from "@/pages/auth/RegisterPage";
+import AddTasksPage from "@/pages/dashboard/buyer/AddTasksPage";
+import BuyerDashboard from "@/pages/dashboard/buyer/BuyerDashboard";
+import PaymentsPage from "@/pages/dashboard/buyer/PaymentsPage";
+import PurchaseCoinsPage from "@/pages/dashboard/buyer/PurchaseCoinsPage";
 import MySubmissionPage from "@/pages/dashboard/worker/MySubmissionPage";
 import TaskListPage from "@/pages/dashboard/worker/TaskListPage";
 import WithdrawalPage from "@/pages/dashboard/worker/WithdrawalPage";
@@ -35,8 +39,9 @@ const Route = createBrowserRouter([
     path: '/dashboard',
     element: <DashboardLayout/>,
     children: [
+      // worker dashboard route
       {
-        path: 'stat',
+        path: 'worker-home',
         element: <WorkerDashboard/>,
       },
       {
@@ -50,7 +55,24 @@ const Route = createBrowserRouter([
       {
         path: 'withdrawals',
         element: <WithdrawalPage/>
-      }
+      },
+      //buyer dashboard route
+      {
+        path: 'buyer-home',
+        element: <BuyerDashboard/>
+      },
+      {
+        path: 'add-tasks',
+        element: <AddTasksPage/>
+      },
+      {
+        path: 'purchase-coins',
+        element: <PurchaseCoinsPage/>
+      },
+      {
+        path: 'payments',
+        element: <PaymentsPage/>
+      },
     ]
   }
 ]);

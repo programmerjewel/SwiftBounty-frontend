@@ -14,28 +14,28 @@ import { NavLink } from "react-router";
 
 const menuItemsArr = {
   worker: [
-    { title: "Home", url: "stat", icon: Home },
+    { title: "Home", url: "worker-home", icon: Home },
     { title: "Task List", url: "task-list", icon: Inbox },
     { title: "My Submissions", url: "my-submission", icon: Send },
     { title: "Withdrawals", url: "withdrawals", icon: BanknoteArrowDown },
   ],
   buyer: [
-    { title: "Home", url: "/dashboard", icon: Home },
-    { title: "Add New Tasks", url: "/add-tasks", icon: PackagePlus },
-    { title: "Purchase Coin", url: "/purchase", icon: Coins },
-    { title: "Payment History", url: "/payments", icon: CreditCard },
+    { title: "Home", url: "buyer-home", icon: Home },
+    { title: "Add New Tasks", url: "add-tasks", icon: PackagePlus },
+    { title: "Purchase Coin", url: "purchase-coins", icon: Coins },
+    { title: "Payment History", url: "payments", icon: CreditCard },
   ],
   admin: [
-    { title: "Home", url: "/dashboard", icon: Home },
-    { title: "Manage Users", url: "/manage-users", icon: Users },
-    { title: "Manage Task", url: "/manage-tasks", icon: ClipboardList },
+    { title: "Home", url: "admin-home", icon: Home },
+    { title: "Manage Users", url: "manage-users", icon: Users },
+    { title: "Manage Task", url: "manage-tasks", icon: ClipboardList },
   ]
 };
 
 export default function DashboardSidebar() {
   const { user } = useAuth();
 
-  const role = user?.role || 'worker'; 
+  const role = user?.role || 'buyer'; 
   const menuItems = menuItemsArr[role] || [];
 
   return (
