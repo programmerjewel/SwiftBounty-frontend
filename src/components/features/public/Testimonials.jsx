@@ -4,7 +4,7 @@ import { Pagination } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
 import { Quote } from "lucide-react"
-import SectionHeader from "../ui/section-header"
+import SectionHeader from "@/components/ui/section-header"
 
 const Testimonials = () => {
   const testimonials = [

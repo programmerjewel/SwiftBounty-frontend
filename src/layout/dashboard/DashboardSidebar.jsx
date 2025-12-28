@@ -8,15 +8,16 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import useAuth from '@/hooks/useAuth';
-import { Calendar, Home, Inbox, PackagePlus, BanknoteArrowDown, Coins, CreditCard, Users, ClipboardList } from "lucide-react";
+import { Send, Home, Inbox, PackagePlus, BanknoteArrowDown, Coins, CreditCard, Users, ClipboardList } from "lucide-react";
+import { NavLink } from "react-router";
 
 
 const menuItemsArr = {
   worker: [
-    { title: "Home", url: "/dashboard", icon: Home },
-    { title: "Task List", url: "/inbox", icon: Inbox },
-    { title: "My Submissions", url: "/calendar", icon: Calendar },
-    { title: "Withdrawals", url: "/withdraw", icon: BanknoteArrowDown },
+    { title: "Home", url: "stat", icon: Home },
+    { title: "Task List", url: "task-list", icon: Inbox },
+    { title: "My Submissions", url: "my-submission", icon: Send },
+    { title: "Withdrawals", url: "withdrawals", icon: BanknoteArrowDown },
   ],
   buyer: [
     { title: "Home", url: "/dashboard", icon: Home },
@@ -53,16 +54,21 @@ export default function DashboardSidebar() {
       </SidebarHeader>
 
       {/* MAIN NAVIGATION */}
-      <SidebarContent className="px-2">
+      <SidebarContent className="px-4">
         <SidebarMenu>
-          {menuItems.map((item) => (
+         {menuItems.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
-                <a href={item.url}>
-                  <item.icon />
-                  <span>{item.title}</span>
-                </a>
-              </SidebarMenuButton>
+              <NavLink to={item.url} className={({ isActive }) =>
+              `flex items-center gap-2 p-2 rounded-sm transition-all ${
+                isActive 
+                  ? "bg-purple-500 text-white" 
+                  : ""
+              }`
+            }
+          >
+            <item.icon className="size-4" />
+            <span>{item.title}</span>
+          </NavLink>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>

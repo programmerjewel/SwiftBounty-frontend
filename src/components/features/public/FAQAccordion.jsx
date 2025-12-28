@@ -4,8 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { CardDescription, CardHeader, CardTitle } from "../ui/card";
-import SectionHeader from "../ui/section-header";
+import SectionHeader from "@/components/ui/section-header";
 
 const faqs = [
   {

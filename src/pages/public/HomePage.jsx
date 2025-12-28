@@ -1,5 +1,6 @@
-import FAQAccordion from "@/components/features/FAQAccordion";
-import Testimonials from "@/components/features/Testimonials";
+import FAQAccordion from "@/components/features/public/FAQAccordion";
+import Testimonials from "@/components/features/public/Testimonials";
+
 
 
 const HomePage = () => {
